@@ -100,7 +100,7 @@ nav ul li a:hover {
 /* Seção Hero (Apresentação Inicial) */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, #1e1e24 0%, #004080 100%);
+    background: linear-gradient(180deg, #0b1d3a 0%, #203a61 60%, #e1e7ed 100%);
     color: white;
     display: flex;
     justify-content: center;
