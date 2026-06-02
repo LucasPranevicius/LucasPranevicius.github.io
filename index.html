@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 { color: #007acc; }
+        p { font-size: 1.1em; }
+        .links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007acc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .links a:hover { background-color: #005999; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Olá, bem-vindo ao meu portfólio!</h1>
+        <p>Este é o meu site totalmente personalizado e hospedado de forma gratuita.</p>
+        <p>Em breve irei listar os meus principais projetos acadêmicos e profissionais aqui.</p>
+        
+        <div class="links">
+            <a href="https://linkedin.com" target="_blank">Meu LinkedIn</a>
+            <a href="#" id="btn-alerta">Clique Aqui</a>
+        </div>
+    </div>
+
+    <script>
+        // Um pequeno script apenas para testar a interatividade do site
+        document.getElementById('btn-alerta').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('O JavaScript também está funcionando perfeitamente!');
+        });
+    </script>
+
+</body>
+</html>
