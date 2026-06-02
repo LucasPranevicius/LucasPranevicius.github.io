@@ -3,60 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Pranevicius</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 { color: #007acc; }
-        p { font-size: 1.1em; }
-        .links a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007acc;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .links a:hover { background-color: #005999; }
-    </style>
+    <title>Seu Nome | Portfólio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Olá, bem-vindo ao meu portfólio!</h1>
-        <p>Este é o meu site totalmente personalizado e hospedado de forma gratuita.</p>
-        <p>Em breve irei listar os meus principais projetos acadêmicos e profissionais aqui.</p>
-        
-        <div class="links">
-            <a href="https://linkedin.com" target="_blank">Meu LinkedIn</a>
-            <a href="#" id="btn-alerta">Clique Aqui</a>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">SeuNome</a>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <script>
-        // Um pequeno script apenas para testar a interatividade do site
-        document.getElementById('btn-alerta').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('O JavaScript também está funcionando perfeitamente!');
-        });
-    </script>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Olá, eu sou o <span>Seu Nome</span></h1>
+            <p>Estudante de Engenharia / Desenvolvedor / Entusiasta de Tecnologia</p>
+            <a href="#projetos" class="btn-primary">Ver Projetos</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="section-padding">
+        <div class="container">
+            <h2>Sobre Mim</h2>
+            <p>Escreva aqui um breve resumo sobre você, sua trajetória acadêmica, suas paixões profissionais e o que você está estudando ou desenvolvendo no momento. Mostre sua motivação!</p>
+            
+            <h3>Habilidades & Ferramentas</h3>
+            <div class="skills-grid">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">HTML & CSS</span>
+                <span class="skill-tag">Git & GitHub</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="section-padding bg-alt">
+        <div class="container">
+            <h2>Meus Projetos</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <h3>Projeto 1: Nome do Projeto</h3>
+                    <p>Descrição breve do que é o projeto, quais ferramentas utilizou e qual foi o seu papel no desenvolvimento.</p>
+                    <a href="#" class="project-link" target="_blank">Ver no GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Projeto 2: Simulação / Análise</h3>
+                    <p>Outro exemplo de projeto. Pode ser um script de automação, um relatório técnico ou uma aplicação web.</p>
+                    <a href="#" class="project-link" target="_blank">Ver no GitHub →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="container footer-content">
+            <p>Vamos nos conectar?</p>
+            <div class="social-links">
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="mailto:seu-email@email.com">E-mail</a>
+            </div>
+            <p class="copyright">&copy; 2026 Seu Nome. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
