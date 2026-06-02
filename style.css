@@ -140,6 +140,13 @@ nav ul li a:hover {
 }
 
 /* Seção Sobre e Tags de Habilidades */
+
+#sobre h3 {
+    font-size: 1.4rem;   /* Deixa o título um pouco maior */
+    margin-top: 35px;    /* CRIA O ESPAÇO QUE VOCÊ QUERIA AQUI */
+    margin-bottom: 15px; /* Espaço antes das tags de habilidades */
+}
+
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
