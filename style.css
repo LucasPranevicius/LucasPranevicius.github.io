@@ -142,7 +142,7 @@ nav ul li a:hover {
 /* Seção Sobre e Tags de Habilidades */
 #sobre h3 {
     font-size: 1.4rem;   /* Deixa o título um pouco maior */
-    margin-top: 35px;    /* CRIA O ESPAÇO QUE VOCÊ QUERIA AQUI */
+    margin-top: 35px;    /* Cria o respiro em relação ao texto de cima */
     margin-bottom: 15px; /* Espaço antes das tags de habilidades */
 }
 
@@ -169,20 +169,20 @@ nav ul li a:hover {
     margin-top: 30px;
 }
 
-/* Garante que se o navegador empilhar os cards, eles mantenham distância */
+/* Estrutura do Card de Projeto */
 .project-card {
     background: white;
     padding: 25px;
-    padding-bottom: 50px;
+    padding-bottom: 75px; /* Espaço extra na base para proteger o botão absoluto */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     border-top: 4px solid var(--primary-color);
     transition: transform 0.3s;
-    margin-bottom: 25px; /* Força o espaço vertical de qualquer jeito */
+    margin-bottom: 25px; 
 
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: relative; /* Serve como ponto de ancoragem para o link absoluto */
 }
 
 .project-card:hover {
@@ -200,8 +200,9 @@ nav ul li a:hover {
     color: #666;
 }
 
+/* Botão "Ver Detalhes do Projeto" Fixado na Base */
 .project-link {
-    display: px inline-block;
+    display: inline-block;
     padding: 8px 16px;
     background-color: transparent;
     color: var(--primary-color);
@@ -213,8 +214,102 @@ nav ul li a:hover {
     transition: all 0.3s ease;
 
     position: absolute;
-    bottom: 20px;
-    left: 25px;
+    bottom: 20px; /* 20px de distância da borda inferior */
+    left: 25px;   /* Alinhado verticalmente com a margem interna do card */
+}
+
+.project-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Mini tags dentro dos cards de projetos */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tag-mini {
+    background-color: #eef2f7;
+    color: #4a5568;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+/* Centralizador de Blocos */
+.center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+}
+
+/* Álbum de Figurinhas Interativo (Grade 2x2) */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Força a estrutura de 2 colunas */
+    gap: 20px;
+    margin: 30px 0;
+    width: 100%;
+}
+
+.album-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    aspect-ratio: 16 / 9; /* Proporção ideal de foto aeronáutica */
+    background-color: #e2e8f0;
+}
+
+.album-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Camada escura que revela o nome do avião no Hover */
+.album-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 29, 58, 0.85); /* Azul escuro translúcido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 15px;
+}
+
+.album-title {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+/* Efeitos Hover do Álbum */
+.album-card:hover .album-overlay {
+    opacity: 1;
+}
+
+.album-card:hover .album-title {
+    transform: translateY(0);
+}
+
+.album-card:hover .album-img {
+    transform: scale(1.05);
 }
 
 /* Rodapé */
@@ -251,102 +346,7 @@ footer {
     opacity: 0.6;
 }
 
-/* Mini tags dentro dos cards de projetos */
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.tag-mini {
-    background-color: #eef2f7;
-    color: #4a5568;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 4px;
-    border: 1px solid #e2e8f0;
-}
-
-.center-box {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;     /* Alinha verticalmente se houver altura */
-    width: 100%;             /* Garante que a div ocupe a largura total da página */
-}
-
-/* NOVO: Estilização do Álbum de Figurinhas Interativo (2x2) */
-.album-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Força a estrutura de 2 colunas */
-    gap: 20px;
-    margin: 30px 0;
-    width: 100%;
-}
-
-.album-card {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    aspect-ratio: 16 / 9; /* Mantém uma proporção retangular padrão de imagem aeronáutica */
-    background-color: #e2e8f0; /* Fundo cinza enquanto a imagem carrega */
-}
-
-.album-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Faz as fotos cobrirem o espaço sem distorcer */
-    transition: transform 0.5s ease;
-}
-
-/* Camada escura que esconde o nome e só aparece no Hover */
-.album-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(11, 29, 58, 0.85); /* Azul escuro aeronáutico translúcido */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* Escondido por padrão */
-    transition: opacity 0.3s ease;
-    padding: 15px;
-}
-
-.album-title {
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-align: center;
-    transform: translateY(10px);
-    transition: transform 0.3s ease;
-}
-
-/* Efeito Hover (Passar o Mouse) */
-.album-card:hover .album-overlay {
-    opacity: 1; /* Revela a camada escura e o texto */
-}
-
-.album-card:hover .album-title {
-    transform: translateY(0); /* Leve animação subindo o texto */
-}
-
-.album-card:hover .album-img {
-    transform: scale(1.05); /* Zoom sutil na imagem de fundo */
-}
-
-/* Responsividade: Vira coluna única apenas em telas bem pequenas de celular */
-@media (max-width: 576px) {
-    .album-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Responsividade Básica para Celular (Menu/Hero) */
+/* Responsividade para Telas Menores (Celulares e Tablets) */
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -357,5 +357,11 @@ footer {
     }
     .hero-content p {
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .album-grid {
+        grid-template-columns: 1fr; /* Álbum vira coluna única em telas muito pequenas */
     }
 }
