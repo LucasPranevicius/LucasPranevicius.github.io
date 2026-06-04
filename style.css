@@ -52,6 +52,21 @@ h2::after {
     border-radius: 2px;
 }
 
+/* Links de Retorno (Voltar para os Projetos / Voltar para a Home) */
+.back-link {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    text-decoration: none; /* Remove a linha embaixo */
+    font-weight: bold;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.back-link:hover {
+    transform: translateX(-5px); /* Desloca o link levemente para a esquerda */
+    color: #005999; /* Escurece o azul sutilmente no hover */
+}
+
 /* Menu de Navegação */
 header {
     background-color: var(--secondary-color);
@@ -100,7 +115,7 @@ nav ul li a:hover {
 /* Seção Hero (Apresentação Inicial) */
 .hero {
     height: 100vh;
-    background: linear-gradient(180deg, #0b1d3a 0%, #203a61 60%, #e1e7ed 100%);
+    background: linear-gradient(180deg, #0b1d3a 10%, #203a61 50%, #ffffff 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -312,17 +327,71 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
+/* Customização da Seção de Contato */
+.contact-text {
+    max-width: 700px;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #4a5568;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Botões de Contato Estilizados */
+.btn-contact {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Botão específico do LinkedIn (Preenchido) */
+.btn-contact.linkedin {
+    background-color: #0077b5; /* Azul oficial do LinkedIn */
+    color: white;
+    border: 2px solid #0077b5;
+}
+
+.btn-contact.linkedin:hover {
+    background-color: #005582;
+    border-color: #005582;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 119, 181, 0.2);
+}
+
+/* Botão específico do E-mail (Vazado/Contorno) */
+.btn-contact.email {
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-contact.email:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 /* Rodapé */
 footer {
     background-color: var(--secondary-color);
     color: white;
     text-align: center;
-    padding: 40px 0;
+    padding: 30px 0;
 }
 
 .footer-content p {
     font-size: 1.2rem;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .social-links a {

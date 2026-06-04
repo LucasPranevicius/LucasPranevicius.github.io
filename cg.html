@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de CG | Detalhes do Projeto</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para a página de detalhes do projeto */
+        .project-details {
+            padding-top: 120px; /* Evita que o menu fixo cubra o título */
+            padding-bottom: 60px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .meta-box {
+            background-color: var(--bg-alt);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .meta-box p {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .meta-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-content h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Lucas Pranevicius</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container project-details">
+        
+        <a href="index.html#projetos" class="back-link">← Voltar para os Projetos</a>
+        
+        <div class="project-header">
+            <h1>Aplicativo Móvel — Calculadora de Centro de Gravidade (CG)</h1>
+        </div>
+
+        <div class="meta-box">
+            <p><strong>📱 Escopo:</strong> Automação de Operações de Pista, Peso e Balanceamento</p>
+            <p><strong>🛠️ Stack Tecnológica:</strong> Desenvolvimento Cross-Platform (Dart / Flutter)</p>
+            <p><strong>📐 Core Computacional:</strong> Estabilidade Longitudinal Dinâmica e Margem Estática ($ME$)</p>
+            <p><strong>👥 Parceria:</strong> Desenvolvido por Prane e Gabigol (2025)</p>
+        </div>
+
+        <div class="project-content">
+            <h2>1. Escopo e Desafio Técnico</h2>
+            <p>
+                Durante as rodadas de voo em uma competição de Aerodesign, o tempo entre as baterias é escasso e a precisão é vital. Mudar a carga útil (payload) exige recalcular instantaneamente a nova posição do Centro de Gravidade (CG) e verificar se a aeronave ainda opera dentro dos limites de estabilidade estática longitudinal estabelecidos pelo projeto.
+            </p>
+            <p>
+                O objetivo deste projeto foi eliminar planilhas analíticas complexas e lentas de pista, substituindo-as por um aplicativo mobile robusto e intuitivo. O software recebe as leituras de massa das três balanças do protótipo (uma no nariz e duas no trem principal) e calcula a posição exata em "X" e "Y" do CG, além da nova Margem Estática da aeronave.
+            </p>
+
+            <h2>2. Lógica e Funcionalidades de Engenharia</h2>
+            <p>
+                O aplicativo não faz apenas cálculos matemáticos simples; ele funciona como um centralizador de telemetria geométrica do avião através de blocos funcionais:
+            </p>
+            <p>
+                <strong>Matriz de Configuração Geométrica:</strong> Na tela de configurações, o usuário calibra as distâncias físicas entre o Bordo de Ataque (BA) e os trens de pouso de nariz e principal (TPN e TPP), o comprimento da Corda Média Aerodinâmica (CMA), e a posição teórica do Ponto Neutro da aeronave.
+            </p>
+            <p>
+                <strong>Plotagem Gráfica Cartesiana:</strong> O grande diferencial do app é a renderização dinâmica de um plano cartesiano que plota visualmente a localização do CG Real (ponto vermelho) confrontando-o diretamente com a posição de projeto do CG Teórico (ponto amarelo), alertando instantaneamente sobre desvios críticos de estabilidade ou excentricidades laterais.
+            </p>
+
+            <h2>3. Interface e Interface do Usuário (UI/UX)</h2>
+            <p>
+                Desenvolvido com uma interface moderna e responsiva baseada na identidade visual da Harpia Aerodesign UFABC, o software conta com sistema de salvamento de Presets para transições rápidas entre diferentes aeronaves da equipe, além de suporte completo a Modo Escuro nativo.
+            </p>
+
+<div class="album-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                
+                <div class="album-card" style="aspect-ratio: 9 / 19; background-color: #0b1411;">
+                    <img src="imagens/cg3.jpeg" alt="Menu Lateral Harpia Aerodesign" class="album-img" style="object-fit: contain;">
+                    <div class="album-overlay">
+                        <span class="album-title">Interface e Menu Lateral</span>
+                    </div>
+                </div>
+
+                <div class="album-card" style="aspect-ratio: 9 / 19; background-color: #0b1411;">
+                    <img src="imagens/cg1.jpeg" alt="Tela Principal Calculadora de CG" class="album-img" style="object-fit: contain;">
+                    <div class="album-overlay">
+                        <span class="album-title">Cálculo de Pista e Gráfico</span>
+                    </div>
+                </div>
+
+                <div class="album-card" style="aspect-ratio: 9 / 19; background-color: #0b1411;">
+                    <img src="imagens/cg2.jpeg" alt="Configurações Geométricas" class="album-img" style="object-fit: contain;">
+                    <div class="album-overlay">
+                        <span class="album-title">Geometria da Aeronave</span>
+                    </div>
+                </div>
+
+                <div class="album-card" style="aspect-ratio: 9 / 19; background-color: #0b1411;">
+                    <video src="imagens/app.mp4" autoplay loop muted playsinline class="album-img" style="object-fit: contain; width: 100%; height: 100%;"></video>
+                    <div class="album-overlay">
+                        <span class="album-title">Demonstração em Tempo Real</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2026 Lucas Pranevicius. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

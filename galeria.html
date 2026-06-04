@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Projetos | Lucas Pranevicius</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .galeria-section {
+            padding-top: 120px;
+            padding-bottom: 60px;
+        }
+
+        /* Títulos cronológicos com respiro correto */
+        .ano-titulo {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        /* MÁGICA DO PINTEREST: Layout Baseado em Colunas Verticais */
+        .galeria-grid {
+            column-count: 3; /* 3 colunas por padrão no desktop */
+            column-gap: 20px; /* Espaço lateral entre as colunas */
+            width: 100%;
+        }
+
+        /* Container de cada foto ajustado para o novo layout */
+        .galeria-item-box {
+            break-inside: avoid; /* Impede que uma foto seja cortada ao meio entre colunas */
+            margin-bottom: 20px; /* Espaço inferior entre as fotos empilhadas */
+        }
+
+        .galeria-item {
+            background-color: var(--bg-alt);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+        }
+
+        .galeria-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Mantém a proporção exata e largura total da coluna */
+        .galeria-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsividade para telas menores (Tablets e Celulares) */
+        @media (max-width: 900px) {
+            .galeria-grid {
+                column-count: 2; /* 2 colunas em tablets */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .galeria-grid {
+                column-count: 1; /* 1 coluna em celulares */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Lucas Pranevicius</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container galeria-section">
+        <a href="index.html" class="back-link">← Voltar para a Home</a>
+        
+        <div class="project-header">
+            <h1>Galeria de Fotos</h1>
+        </div>
+        <p style="color: #4a5568; margin-top: 10px; font-size: 1.1rem;">
+            Registros visuais e documentação técnica organizados cronologicamente por ano de desenvolvimento.
+        </p>
+
+        <div id="cronologiaContainer"></div>
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2026 Lucas Pranevicius. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cronologiaContainer = document.getElementById("cronologiaContainer");
+            const extensao = ".jpg"; 
+            const pastaRaiz = "imagens/galeria/"; 
+            
+            // Lista de anos que você quer escanear
+            const anos = [2023, 2024, 2025.1, 2025.2, 2026];
+            
+            // Defina aqui a quantidade máxima de fotos que você pretende ter por ano (ex: até 20 fotos)
+            const maxFotosPorAno = 20; 
+
+            // Varre cada ano de forma independente
+            anos.forEach(anoAtual => {
+                
+                // Cria a estrutura do bloco do ano na memória
+                const anoDiv = document.createElement("div");
+                anoDiv.id = `bloco-${anoAtual}`;
+                anoDiv.style.display = "none"; // Só aparece se encontrar pelo menos uma foto válida
+                anoDiv.innerHTML = `
+                    <h3 class="ano-titulo"> ${anoAtual}</h3>
+                    <div class="galeria-grid" id="grid-${anoAtual}"></div>
+                `;
+                cronologiaContainer.appendChild(anoDiv);
+
+                const gridContainer = document.getElementById(`grid-${anoAtual}`);
+                let fotosEncontradas = 0;
+
+                // Faz um loop testando todas as numerações de 1 até o limite máximo
+                for (let i = 1; i <= maxFotosPorAno; i++) {
+                    let img = new Image();
+                    let url = `${pastaRaiz}${anoAtual}/foto${i}${extensao}`;
+                    
+                    img.src = url;
+                    
+                    // Se a imagem existir no seu computador, renderiza ela na tela
+                    img.onload = function() {
+                        // Ativa a exibição do título do ano se achar a primeira foto dele
+                        if (fotosEncontradas === 0) {
+                            anoDiv.style.display = "block";
+                        }
+                        
+                        const itemDiv = document.createElement("div");
+                        itemDiv.className = "galeria-item-box"; // Injeta o contêiner correto para o layout em colunas
+                        itemDiv.innerHTML = `
+                            <div class="galeria-item">
+                                <img src="${url}" alt="Projeto ${anoAtual} - Registro ${i}" class="galeria-img">
+                            </div>
+                        `;
+                        gridContainer.appendChild(itemDiv);
+                        fotosEncontradas++;
+                    };
+
+                    // Se a imagem não existir, ele apenas ignora silenciosamente e continua o loop
+                    img.onerror = function() {
+                        // Não faz nada e não quebra a busca pelas outras fotos/anos
+                    };
+                }
+            });
+        });
+    </script>
+</body>
+</html>

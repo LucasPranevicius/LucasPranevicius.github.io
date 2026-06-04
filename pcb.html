@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVD-1 RESSONARE | Detalhes do Projeto</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para a página de detalhes do projeto */
+        .project-details {
+            padding-top: 120px; /* Evita que o menu fixo cubra o título */
+            padding-bottom: 60px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .meta-box {
+            background-color: var(--bg-alt);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .meta-box p {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .meta-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-content h2 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Lucas Pranevicius</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container project-details">
+        
+        <a href="index.html#projetos" class="back-link">← Voltar para os Projetos</a>
+        
+        <div class="project-header">
+            <h1>PCB — Sistema de Detecção de Vibração (SVD-1 RESSONARE)</h1>
+        </div>
+
+        <div class="meta-box">
+            <p><strong>🧠 Escopo:</strong> Aquisição de Dados de Dinâmica Estrutural e Análise Vibracional</p>
+            <p><strong>🛠️ Arquitetura de Hardware:</strong> Placa Dupla Face (Double Layer) desenvolvida no KiCad EDA</p>
+            <p><strong>💻 Elementos Centrais:</strong> Microcontrolador ESP32, Amplificador Operacional Quádruplo LM324</p>
+            <p><strong>🔋 Autonomia e Armazenamento:</strong> Alimentação via Bateria LiPo e gravação de logs em cartão SD</p>
+        </div>
+
+        <div class="project-content">
+            <h2>1. Escopo e Desafio Técnico</h2>
+            <p>
+                O monitoramento de vibrações em tempo real é uma etapa crítica na validação de modelos aeroelásticos estruturais (como os ensaios de vibração em solo - GVT). O desafio deste projeto consistiu em desenvolver um hardware dedicado (SVD-1 RESSONARE) capaz de coletar e tratar sinais analógicos de alta frequência provenientes de até 4 sensores piezoelétricos simultaneamente.
+            </p>
+            <p>
+                Como sensores piezoelétricos geram picos de tensão transientess elevados que ultrapassam facilmente o limite operacional de 3.3V do ESP32, o circuito foi projetado com uma etapa robusta de condicionamento analógico para casar impedâncias, proteger os pinos de entrada e filtrar ruídos de alta frequência do sinal bruto antes da conversão ADC.
+            </p>
+
+            <h2>2. Arquitetura do Circuito e Condicionamento</h2>
+            <p>
+                A placa foi dividida em blocos lógicos bem definidos para garantir a máxima integridade do sinal em uma malha dupla face:
+            </p>
+            <p>
+                <strong>Casamento de Impedância e Bias:</strong> Cada canal possui um capacitor de acoplamento para isolar componentes DC indesejadas, seguido de um resistor de pull-up ancorado em uma tensão de referência ($V_{REF}$) gerada por um circuito divisor de tensão dedicado com capacitores de desacoplamento (Bulk e VREF).
+            </p>
+            <p>
+                <strong>Estágio Buffer e Filtro Passa-Baixa:</strong> O sinal estabilizado passa por um circuito seguidor de tensão (buffer) utilizando o CI LM324, que apresenta altíssima impedância de entrada e baixa impedância de saída. Logo após o buffer, uma malha passiva RC atua como um filtro passa-baixa, eliminando harmônicas espúrias de alta frequência e ruídos eletromagnéticos de chaveamento.
+            </p>
+
+            <h2>3. Resultados do Desenvolvimento (Galeria de Projeto)</h2>
+            <p>
+                O design compacto permitiu um posicionamento otimizado das trilhas de sinal analógico, minimizando as indutâncias mútuas (cross-talk). O sistema final prevê gravação contínua dos dados em um módulo de cartão SD e gerenciamento de energia otimizado para operação em campo via bateria LiPo.
+            </p>
+
+        <div class="album-grid">
+                        <div class="album-card" style="background-color: #1a1a1a;"> <img src="imagens\ESQ_PCB.png" alt="Esquemático Elétrico do Circuito no KiCad" class="album-img" style="object-fit: contain; padding: 10px;">
+                            <div class="album-overlay">
+                                <span class="album-title">Circuito de Condicionamento (KiCad)</span>
+                            </div>
+                        </div>
+
+                        <div class="album-card" style="background-color: #cbd5e1;"> <img src="imagens\3D_PCB.png" alt="Renderização 3D da Placa SVD-1 RESSONARE" class="album-img" style="object-fit: contain; padding: 10px;">
+                            <div class="album-overlay">
+                                <span class="album-title">Visualização 3D da Placa Final</span>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2026 Lucas Pranevicius. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
