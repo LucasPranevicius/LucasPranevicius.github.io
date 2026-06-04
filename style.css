@@ -1,4 +1,6 @@
-/* Configurações Gerais e Cores */
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E CORES
+   ========================================================================== */
 :root {
     --primary-color: #007acc; /* Azul principal */
     --secondary-color: #1e1e24; /* Escuro para o menu/cards */
@@ -67,7 +69,17 @@ h2::after {
     color: #005999; /* Escurece o azul sutilmente no hover */
 }
 
-/* Menu de Navegação */
+/* Centralizador de Blocos */
+.center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+}
+
+/* ==========================================================================
+   MENU DE NAVEGAÇÃO
+   ========================================================================== */
 header {
     background-color: var(--secondary-color);
     color: white;
@@ -112,7 +124,9 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
-/* Seção Hero (Apresentação Inicial) */
+/* ==========================================================================
+   SEÇÃO HERO (APRESENTAÇÃO INICIAL)
+   ========================================================================== */
 .hero {
     height: 100vh;
     background: linear-gradient(180deg, #0b1d3a 10%, #203a61 50%, #ffffff 100%);
@@ -154,7 +168,9 @@ nav ul li a:hover {
     background-color: #005999;
 }
 
-/* Seção Sobre e Tags de Habilidades */
+/* ==========================================================================
+   SEÇÃO SOBRE E TAGS DE HABILIDADES
+   ========================================================================== */
 #sobre h3 {
     font-size: 1.4rem;   /* Deixa o título um pouco maior */
     margin-top: 35px;    /* Cria o respiro em relação ao texto de cima */
@@ -176,7 +192,182 @@ nav ul li a:hover {
     font-weight: 500;
 }
 
-/* Grid de Projetos (Cards) */
+/* ==========================================================================
+   GRADE DE COMPETÊNCIAS (HARD SKILLS)
+   ========================================================================== */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.skill-category-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #cbd5e1; /* Padronizado com a timeline */
+    transition: all 0.3s ease;
+}
+
+.skill-category-card:hover {
+    transform: translateY(-5px);
+    border-left-color: var(--primary-color); /* Transiciona para o azul oficial */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.category-icon {
+    font-size: 1.5rem;
+    background: var(--bg-alt);
+    padding: 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-category-card h4 {
+    font-size: 1.15rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.skill-list {
+    list-style: none; /* Remove as bolinhas padrão chatinhas */
+    padding: 0;
+}
+
+.skill-list li {
+    font-size: 0.95rem;
+    color: #4a5568;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.skill-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.skill-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   LINHA DO TEMPO (EXPERIÊNCIA & LIDERANÇA)
+   ========================================================================== */
+.timeline {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* A linha vertical de fundo */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: #e2e8f0;
+    top: 0;
+    bottom: 0;
+    left: 150px; /* Alinhamento para dar espaço às datas na esquerda */
+    border-radius: 2px;
+}
+
+/* Estrutura de cada bloco da linha do tempo */
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Posicionamento e estilo da Data */
+.timeline-date {
+    width: 120px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    padding-top: 15px;
+}
+
+/* O ponto (dot) indicador na linha azul */
+.timeline-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    left: 144px; /* Centralizado em cima da linha de 3px */
+    top: 21px;
+    z-index: 10;
+    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    background-color: #005999;
+}
+
+/* Caixa de conteúdo de texto */
+.timeline-content {
+    flex: 1;
+    margin-left: 50px; /* Distância em relação à linha vertical */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-left: 4px solid #cbd5e1;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+    border-left-color: var(--primary-color);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    margin-bottom: 4px;
+}
+
+.timeline-content h4 {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: #4a5568;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   GRID DE PROJETOS (CARDS)
+   ========================================================================== */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -190,9 +381,9 @@ nav ul li a:hover {
     padding: 25px;
     padding-bottom: 75px; /* Espaço extra na base para proteger o botão absoluto */
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--primary-color);
-    transition: transform 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-left: 4px solid #cbd5e1; /* Modificado de border-top para border-left padronizado */
+    transition: all 0.3s ease;
     margin-bottom: 25px; 
 
     display: flex;
@@ -202,6 +393,8 @@ nav ul li a:hover {
 
 .project-card:hover {
     transform: translateY(-5px);
+    border-left-color: var(--primary-color); /* Modificado para acender na esquerda */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
 }
 
 .project-card h3 {
@@ -256,15 +449,9 @@ nav ul li a:hover {
     border: 1px solid #e2e8f0;
 }
 
-/* Centralizador de Blocos */
-.center-box {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    width: 100%;
-}
-
-/* Álbum de Figurinhas Interativo (Grade 2x2) */
+/* ==========================================================================
+   ÁLBUM DE FIGURINHAS INTERATIVO (GRADE 2x2)
+   ========================================================================== */
 .album-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Força a estrutura de 2 colunas */
@@ -327,7 +514,9 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Customização da Seção de Contato */
+/* ==========================================================================
+   SEÇÃO DE CONTATO
+   ========================================================================== */
 .contact-text {
     max-width: 700px;
     margin-bottom: 30px;
@@ -381,7 +570,9 @@ nav ul li a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Rodapé */
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
 footer {
     background-color: var(--secondary-color);
     color: white;
@@ -415,7 +606,9 @@ footer {
     opacity: 0.6;
 }
 
-/* Responsividade para Telas Menores (Celulares e Tablets) */
+/* ==========================================================================
+   RESPONSIVIDADE E MEDIA QUERIES
+   ========================================================================== */
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -426,6 +619,28 @@ footer {
     }
     .hero-content p {
         font-size: 1.1rem;
+    }
+    .timeline::after {
+        left: 20px; /* Joga a linha para o canto esquerdo */
+    }
+    .timeline-item {
+        flex-direction: column;
+        padding-left: 45px;
+    }
+    .timeline-date {
+        width: auto;
+        text-align: left;
+        padding-top: 0;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+    .timeline-dot {
+        left: 14px; /* Realinha a bolinha com a linha na esquerda */
+        top: 4px;
+    }
+    .timeline-content {
+        margin-left: 0;
+        width: 100%;
     }
 }
 
