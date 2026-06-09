@@ -609,10 +609,12 @@ footer {
 /* ==========================================================================
    RESPONSIVIDADE E MEDIA QUERIES
    ========================================================================== */
+/* ==========================================================================
+   RESPONSIVIDADE E MEDIA QUERIES
+   ========================================================================== */
 @media (max-width: 768px) {
     .nav-container {
-        flex-direction: column;
-        gap: 10px;
+        padding: 15px 5%;
     }
     .hero-content h1 {
         font-size: 2.2rem;
@@ -620,8 +622,9 @@ footer {
     .hero-content p {
         font-size: 1.1rem;
     }
+    /* Mantém o comportamento responsivo da linha do tempo */
     .timeline::after {
-        left: 20px; /* Joga a linha para o canto esquerdo */
+        left: 20px;
     }
     .timeline-item {
         flex-direction: column;
@@ -635,7 +638,7 @@ footer {
         font-size: 1rem;
     }
     .timeline-dot {
-        left: 14px; /* Realinha a bolinha com a linha na esquerda */
+        left: 14px;
         top: 4px;
     }
     .timeline-content {
@@ -648,4 +651,126 @@ footer {
     .album-grid {
         grid-template-columns: 1fr; /* Álbum vira coluna única em telas muito pequenas */
     }
+}
+/* ==========================================================================
+   MENU DE NAVEGAÇÃO GLOBAL (MÉTODO GAVETA UNIFICADO)
+   ========================================================================== */
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: relative;
+}
+
+/* Força o checkbox real a ficar escondido sempre */
+.menu-toggle {
+    display: none;
+}
+
+/* O botão Hambúrguer agora fica visível em qualquer tamanho de tela */
+.menu-icon {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.nav-icon {
+    background: white;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+    transition: background 0.2s ease-out;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+    background: white;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+}
+
+.nav-icon::before { top: 7px; }
+.nav-icon::after { top: -7px; }
+
+/* ESTRUTURA DO MENU GAVETA GLOBAL (PC E CELULAR) */
+nav {
+    position: fixed;
+    background-color: var(--secondary-color);
+    top: 0;
+    right: -100%; /* Totalmente para fora da tela por padrão */
+    width: 280px;  /* Largura elegante para o menu lateral */
+    height: 100vh;
+    padding-top: 100px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1050;
+}
+
+/* Links empilhados verticalmente em qualquer resolução */
+nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: none;
+    width: 100%;
+}
+
+nav ul li {
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav ul li a {
+    display: block;
+    padding: 18px 30px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.02);
+    padding-left: 35px; /* Efeito sutil de recuo no hover do link */
+}
+
+/* INTERAÇÃO: Ativa o deslize do menu ao clicar */
+.menu-toggle:checked ~ nav {
+    right: 0;
+}
+
+/* Transforma as 3 listras no "X" ao abrir */
+.menu-toggle:checked ~ .menu-icon .nav-icon {
+    background: transparent;
+}
+
+.menu-toggle:checked ~ .menu-icon .nav-icon::before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.menu-toggle:checked ~ .menu-icon .nav-icon::after {
+    transform: rotate(45deg);
+    top: 0;
 }
