@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Em Construção | Lucas Pranevicius</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ==========================================================================
+           LAYOUT DA PÁGINA DE CONSTRUÇÃO
+           ========================================================================== */
+        .construction-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--bg-alt); /* Fundo um pouco mais destacado */
+            padding-top: 80px; /* Compensa o menu fixo */
+        }
+
+        .construction-content h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .construction-content p {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            margin-bottom: 35px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==========================================================================
+           BONECO ANIMADO EM PURO CSS (ASTRONAUTA CODANDO)
+           ========================================================================== */
+        .astronaut-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 220px;
+            margin-bottom: 20px;
+        }
+
+        .astronaut {
+            position: relative;
+            width: 160px;
+            height: 180px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Capacete */
+        .helmet {
+            position: absolute;
+            top: 0;
+            left: 40px;
+            width: 80px;
+            height: 80px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        /* Visor Escuro */
+        .visor {
+            position: absolute;
+            top: 22px;
+            left: 12px;
+            width: 55px;
+            height: 35px;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+        }
+
+        /* Reflexo no visor (Luz Tech) */
+        .visor::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 15px;
+            height: 6px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            transform: rotate(-15deg);
+            opacity: 0.9;
+        }
+
+        /* Mochila (Jetpack) */
+        .backpack {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 110px;
+            height: 90px;
+            background-color: var(--border-color);
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        /* Corpo */
+        .body-astro {
+            position: absolute;
+            top: 70px;
+            left: 45px;
+            width: 70px;
+            height: 80px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--border-color);
+            border-radius: 20px 20px 30px 30px;
+            z-index: 2;
+        }
+
+        /* Notebook flutuando */
+        .laptop {
+            position: absolute;
+            top: 100px;
+            left: 85px;
+            width: 65px;
+            height: 45px;
+            background-color: var(--text-color);
+            border-radius: 6px;
+            transform: rotate(15deg);
+            z-index: 4;
+            animation: hover-laptop 4s ease-in-out infinite;
+        }
+
+        /* Tela do Notebook e Teclado */
+        .laptop::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 59px;
+            height: 34px;
+            background-color: var(--secondary-color);
+            border-radius: 3px;
+            border-bottom: 5px solid var(--primary-color); 
+        }
+
+        /* Braço digitando */
+        .arm {
+            position: absolute;
+            top: 85px;
+            left: 55px;
+            width: 25px;
+            height: 45px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--border-color);
+            border-radius: 15px;
+            transform: rotate(-25deg);
+            z-index: 5;
+        }
+
+        /* Física das Animações */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-18px); }
+        }
+
+        @keyframes hover-laptop {
+            0%, 100% { transform: rotate(15deg) translateY(0px); }
+            50% { transform: rotate(10deg) translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Lucas Pranevicius</a>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="index.html#experiencia">Experiência</a></li>
+                    <li><a href="index.html#projetos">Projetos</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="construction-section">
+        <div class="container">
+            
+            <div class="astronaut-container">
+                <div class="astronaut">
+                    <div class="backpack"></div>
+                    <div class="helmet">
+                        <div class="visor"></div>
+                    </div>
+                    <div class="body-astro"></div>
+                    <div class="arm"></div>
+                    <div class="laptop"></div>
+                </div>
+            </div>
+
+            <div class="construction-content">
+                <h1>Página em Desenvolvimento</h1>
+                <p>Ainda estou escrevendo o código, compilando a documentação e calibrando os dados desta seção. Volte em breve para ver o projeto finalizado!</p>
+                <a href="index.html#projetos" class="btn-primary">← Voltar para os Projetos</a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
